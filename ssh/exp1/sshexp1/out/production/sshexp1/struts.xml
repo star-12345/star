@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="jxl" extends="struts-default">
+        <!--对一个Action配置，可以有多对；name是对业务控制器命名，在表单中指定的地址；class指定类的位置。-->
+        <action name="user" class="cn.cslg.action.UserAction">
+            <result name="success">/success.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+
+        <action name="register" class="cn.cslg.action.RegisterAction">
+            <result name="resuccess">/login.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+    </package>
+
+</struts>
