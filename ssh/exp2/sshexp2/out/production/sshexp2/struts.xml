@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="default" extends="struts-default">
+        <action name="visitcount" class="cn.cslg.action.VisitCountAction">
+            <result name="visitcount">/VisitCount.jsp</result>
+        </action>
+
+        <action name="login" class="cn.cslg.action.LoginIocAction">
+            <result name="success">/success.jsp</result>
+            <result name="error">/login.jsp</result>
+        </action>
+        
+        <action name="logmethod" class="cn.cslg.action.LoginRegisterAction" method="login">
+            <result name="success">/success.jsp</result>
+            <result name="error">/loginmethod.jsp</result>
+        </action>
+        <action name="regimethod" class="cn.cslg.action.LoginRegisterAction" method="register">
+            <result name="registsuccess">/registsuccess.jsp</result>
+        </action>
+        
+
+    </package>
+
+
+    <constant name="struts.custom.i18n.resources" value="globalMessages"></constant>
+    <constant name="struts.i18n.encoding" value="UTF-8"></constant>
+    <package name="i18N" extends="struts-default">
+        <action name="logincheck" class="cn.cslg.action.LoginCheckAction">
+            <result name="success">/loginsuccess.jsp</result>
+            <result name="error">/logincheck.jsp</result>
+        </action>
+
+        <action name="changelanguage" class="cn.cslg.action.ChangeLanguageAction">
+            <result name="success">/logincheck.jsp</result>
+        </action>
+
+        <action name="register2" class="cn.cslg.action.RegisterAtion">
+            <result name="input">/register2.jsp</result>
+            <result name="success">/registersuccess2.jsp</result>
+        </action>
+
+        <!-- 文件上传 -->
+        <action name="upLoad" class="cn.cslg.action.UploadAction">
+            <!-- fileUpload拦截器配置-->
+            <interceptor-ref name="fileUpload">
+                <!--上传文件最大字节数-->
+                <param name="maximumSize">10000000</param>
+                <param name="allowedTypes">
+                    image/gif,image/png,image/jpeg,image/jpg,image/pjpeg
+                </param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"/>
+            <!-- 设置上传文件保存的文件夹 -->
+            <param name="savePath">/save</param>
+            <result name="input">/fileUpload.jsp</result>
+            <result name="success">/fileUpSuccess.jsp</result>
+
+        </action>
+
+        <!-- 文件下载-->
+        <action name="fileDownload" class="cn.cslg.action.fileDownload">
+            <param name="path">/download/dacaiku.jpg</param>
+            <!-- 设置stream属性 -->
+            <result name="success" type="stream">
+                <!-- 设置stream对应的参数 -->
+                <param name="contentType">image/jpg</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename="jxl.jpg"</param>
+                <param name="bufferSize">40960</param>
+            </result>
+        </action>
+
+
+    </package>
+
+
+
+</struts>
