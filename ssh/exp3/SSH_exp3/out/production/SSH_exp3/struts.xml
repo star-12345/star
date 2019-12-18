@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="default" extends="struts-default">
+        <action name="login" class="cn.cslg.Action.LoginAction">
+            <result name="success">/success.jsp</result>
+            <result name="input">/login.jsp</result>
+            <result name="error">/login.jsp</result>
+        </action>
+
+        <action name="register" class="cn.cslg.Action.RegisterAction">
+            <result name="success">/login.jsp</result>
+            <result name="input">/register.jsp</result>
+            <result name="error">/register.jsp</result>
+        </action>
+    </package>
+
+    <package name="student" extends="struts-default">
+        <action name="lookMessageAction" class="cn.cslg.Action.LookMessageAction">
+            <result name="success">/student/lookMessage.jsp</result>
+            <result name="input">/student/index.jsp</result>
+        </action>
+
+        <action name="addMessageAction" class="cn.cslg.Action.AddMessageAction">
+            <result name="success" type="chain">lookMessageAction</result>
+            <result name="input">/student/addMessage.jsp</result>
+        </action>
+
+        <action name="findMessageAction" class="cn.cslg.Action.FindMessageAction">
+            <result name="success">/student/updateMessage.jsp</result>
+            <result name="input">/student/findMessage.jsp</result>
+        </action>
+
+        <action name="deleteMessageAction" class="cn.cslg.Action.DeleteMessageAction">
+            <result name="success" type="chain">lookMessageAction</result>
+            <result name="input" >/student/deleteMessage.jsp</result>
+        </action>
+        <action name="updateMessageAction" class="cn.cslg.Action.UpdateMessageAction">
+            <result name="success" type="chain">lookMessageAction</result>
+            <result name="input">/student/updateMessage.jsp</result>
+        </action>
+
+
+    </package>
+
+
+</struts>
